@@ -1,0 +1,362 @@
+
+    body {
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 23px;
+        line-height: 1.66667;
+        font-weight: 300;
+        color: rgba(21, 21, 21, 0.8);
+        background-color: #5cd3ff;
+        letter-spacing: -0.03em;
+        -webkit-text-size-adjust: none;
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+
+    ::selection {
+        background: #000;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    ::-moz-selection {
+        background: #000;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    p {
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    strong {
+        font-weight: 700;
+    }
+
+    /*
+    **************************
+    NAVIGATION OPACITY
+    **************************
+    */
+
+
+
+    .opacity-nav {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        z-index: 9999;
+        background: rgba(0,0,0,0.95);
+    }
+
+    ul.menu-fullscreen {
+        width: 100%;
+        top: 50%;
+        position: absolute;
+        height: 280px;
+        margin-top: -140px;
+    }
+
+        ul.menu-fullscreen li {
+            font-size: 35px;
+            text-align: center;
+            line-height: 70px;
+            font-weight: 500;
+        }
+
+            ul.menu-fullscreen li > a {
+                color: #999999;
+                border: 0;
+            }
+
+                ul.menu-fullscreen li > a:hover {
+                    color: #ffffff;
+                }
+
+
+    #full {
+        width: 1140px;
+        position: relative;
+        top: 0;
+        margin: 0 auto;
+        z-index: 9997;
+    }
+
+
+    #fullscreen {
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin: 0 auto;
+        height: 80px;
+        z-index: 9998;
+    }
+
+    /*
+    **************************
+    CONTENT
+    **************************
+    */
+
+    .hero-image {
+        position: relative;
+        width: 100%;
+        top: 0;
+        height: 400px;
+        background: url('../img/full/full.jpg') center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .one-column {
+        width: 13%;
+        position: relative;
+        float: left;
+    }
+
+    .two-column {
+        width: 60%;
+        position: relative;
+        float: left;
+    }
+
+    .one-column p {
+        width: 70% !important;
+    }
+
+    .two-column p {
+        /*Tamaño horizontal del contenido del project*/
+        width: 145% !important;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .content {
+        position: relative;
+        width: 1140px;
+        margin: 50px auto;
+    }
+
+
+        .content .text-intro {
+            width: 1140px;
+            margin-top: 150px;
+            margin: 150px auto 0;
+        }
+
+            .content .text-intro h1 {
+                font-family: 'Archivo Black', sans-serif;
+                font-size: 66px;
+                color: #000000;
+                font-weight: 900;
+                line-height: 70px;
+            }
+
+            .content .text-intro p {
+                /* texto de los proyectos*/
+                font-family: 'Archivo Black', sans-serif;
+                font-size: 23px;
+                color: #000000;
+                margin-top: 30px;
+                font-weight: 400;
+                line-height: 23px;
+                letter-spacing: 0px;
+                padding: 10px;
+                /* width: 55%; */
+            }
+
+    .typed-cursor {
+        opacity: 1;
+        font-weight: 900;
+        -webkit-animation: blink 0.7s infinite;
+        -moz-animation: blink 0.7s infinite;
+        -ms-animation: blink 0.7s infinite;
+        -o-animation: blink 0.7s infinite;
+        animation: blink 0.7s infinite;
+    }
+
+    @-keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-ms-keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-o-keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+
+    /*
+    **************************
+    PORTFOLIO GRID
+    **************************
+    */
+
+    .prev-next {
+        width: 100%;
+        max-width: 1170px;
+        margin: 0 auto;
+        padding-top: 100px;
+    }
+
+        .prev-next a {
+            color: black;
+            font-weight: 500;
+            padding-bottom: 20px;
+        }
+
+            .prev-next a:hover {
+                border-bottom: 1px solid black;
+            }
+
+    .prev-button {
+        width: 50%;
+        position: relative;
+        float: left;
+        text-align: left;
+    }
+
+    .next-button {
+        width: 50%;
+        position: relative;
+        float: left;
+        text-align: right;
+    }
+
+
+    #ajax-content {
+        width: 100%;
+    }
+
+    .portfolio-grid {
+        width: 1170px;
+        position: relative;
+        margin: 30px auto;
+        overflow: hidden;
+    }
+
+    #portfolio-sidebar {
+        width: 780px !important;
+        padding-right: 390px;
+    }
+
+    li.grid-item {
+        width: 360px;
+        position: relative;
+        float: left;
+        padding: 15px;
+    }
+
+    .grid-hover {
+        position: absolute;
+        width: 330px;
+        height: 85%;
+        top: 15px;
+        background: white;
+        z-index: 2;
+        opacity: 0;
+        -webkit-transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -ms-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+    }
+
+        .grid-hover:hover {
+            opacity: 0.9;
+        }
+
+        .grid-hover h1 {
+            font-size: 23px;
+            bottom: 80px;
+            left: 35px;
+            position: absolute;
+            text-transform: uppercase;
+            color: #000000;
+            letter-spacing: 1px;
+            font-weight: 900;
+            line-height: 50px;
+        }
+
+        .grid-hover p {
+            font-size: 13px;
+            bottom: 40px;
+            left: 40px;
+            position: absolute;
+            color: #686868;
+            letter-spacing: 1px;
+            font-weight: 400;
+            line-height: 50px;
+        }
+
+    li.grid-item img {
+        width: 360px;
+    }

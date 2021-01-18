@@ -1,0 +1,64 @@
+﻿@model  List<starteAlkemy.Models.ViewModels.HomeImagesViewModel>
+@Html.AntiForgeryToken()
+<div>
+    @if (Model.Count() == 6)
+    {
+        <h2>Se alcanzo la maxima cantidad de imagenes permitidas </h2>
+    }
+    else
+    {
+        <h2>Debe proporcionar 6 imagenes </h2>
+    }
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Imagen</th>
+                <th>Texto</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            <img src="@Model[i].LinkImage" height="300" width="300" />
+                        </td>
+                        <td>
+                            <p>@Html.DisplayFor(modelItem => @Model[i].Text)</p>
+                        </td>
+
+
+                        <td>
+                            <p> <input type="button" onclick="@(Html.Raw(String.Format("removeFile({0})",Model[i].IdImage)))" value="Borrar" /> </p>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function removeFile(id) {
+        //var answer = confirm("Are you sure you want to delete this file?")
+        //if (answer) { }
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("QuitImage","Home")',
+            data: { id: id },
+            success: function (result) {
+                $('#linksDiv').load('@Url.Action("GetLinks","Home")');
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+
+</script>
+

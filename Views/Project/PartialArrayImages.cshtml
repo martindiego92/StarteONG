@@ -1,0 +1,36 @@
+﻿@model  starteAlkemy.Models.ViewModels.LinksMmViewModel
+
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("PartialImagesPost", "Project",
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "linksDivP",
+        InsertionMode = InsertionMode.Replace
+    })) 
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Cargar Imágenes</legend>
+                
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LinkUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LinkUrl)
+        </div>
+
+        
+        <p>
+            <input type="submit" value="Cargar" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery.validate")
+    @Scripts.Render("~/bundles/jquery.validate.unobtrusive") @*For unobtrusive-ajax*@
+}

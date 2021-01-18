@@ -1,0 +1,38 @@
+﻿@model  starteAlkemy.Models.ViewModels.HomeViewModel
+@Html.AntiForgeryToken()
+
+
+<h6> Imagen de fondo de "Donaciones": </h6>
+
+<td>
+    <img src="@Model.BackgroundDonate" height="300" width="300" />
+</td>
+
+<td>
+    <p> <input type="button" onclick="@(Html.Raw(String.Format("removeFileDonate({0})",Model.Id)))" value="Borrar" /> </p>
+</td>
+
+
+<script>
+    function removeFileDonate(id) {
+        
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("QuitImageBackgroundDonate", "Home")',
+            data: { id: id },
+            success: function (result) {
+                $('#donatelink').load('@Url.Action("GetBackgroundDonateImage", "Home")');
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+
+</script>
+
+
+
+
+
+

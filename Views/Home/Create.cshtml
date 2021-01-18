@@ -1,0 +1,63 @@
+﻿@model starteAlkemy.Models.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section section-xl">    
+    <br />
+    <div class="container pt-3">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.WelcomeText, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.WelcomeText, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WelcomeText, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MercadoPagoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.MercadoPagoId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MercadoPagoId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cbu, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Cbu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cbu, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroDeCuenta, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.NumeroDeCuenta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumeroDeCuenta, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @for (int i = 0; i < 7; i++)
+                {
+                    @Html.LabelFor(Model => Model.ListLinks[i].LinkImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(Model => Model.ListLinks[i].LinkImage, new { @class = "form-control" })
+                    @Html.LabelFor(Model => Model.ListLinks[i].Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(Model => Model.ListLinks[i].Text, new { @class = "form-control" })
+                }
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="container">
+        @Html.ActionLink("Volver al listado", "Index")
+    </div>
+</section>

@@ -1,0 +1,91 @@
+﻿@model starteAlkemy.Models.ViewModels.ProjectViewModel
+
+@{
+    ViewBag.Title = "Nuevo Proyecto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</section>
+
+<section class="section section-xl">
+
+
+
+    <div class="container">
+        <br />
+        <br />
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Datos Generales</a></li>
+            <li><a data-toggle="tab" href="#menu1">Cargar Imagenes</a></li>
+            
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>Datos Generales</h3>
+
+                <div class="container pt-3">
+                    @using (Html.BeginForm("Create", "Project", FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <div class="row">
+                            <div class="col-md-6 col-lg-offset-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(Model => Model.TitleProject)
+                                    @Html.TextBoxFor(Model => Model.TitleProject, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(Model => Model.TitleProject, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(Model => Model.DescProject)
+                                    @Html.TextBoxFor(Model => Model.DescProject, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(Model => Model.DescProject, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(Model => Model.ContentProject)
+                                    @Html.TextAreaFor(Model => Model.ContentProject, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(Model => Model.ContentProject, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProjectAddedDate)
+                                    @Html.EditorFor(model => model.ProjectAddedDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ProjectAddedDate, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Guardar " onclick="return confirm('¿Desea guardar cambios?')">
+                            </div>
+
+                            <div class="form-group">
+                                @Html.ActionLink("Volver al listado", "Index")
+                            </div>
+
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <div class="container">
+                    @{Html.RenderAction("PartialImagesGet", "Project"); }
+                </div>
+                <div class="container" id="linksDivP">
+                    @{ Html.RenderAction("GetLinks", "Project");}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

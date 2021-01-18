@@ -1,0 +1,39 @@
+﻿@model  starteAlkemy.Models.ViewModels.HomeViewModel
+@Html.AntiForgeryToken()
+
+
+<h6> Imagen de fondo de "Nuestra Mision": </h6>
+
+<td>
+    <img src="@Model.BackgroundOurMission" height="300" width="300" />
+</td>
+
+<td>
+    <p> <input type="button" onclick="@(Html.Raw(String.Format("removeFileOurMission({0})",Model.Id)))" value="Borrar" /> </p>
+</td>
+
+
+<script>
+    function removeFileOurMission(id) {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("QuitImageBackgroundOurMission", "Home")',
+            data: { id: id },
+            success: function (result) {
+                $('#missionlink').load('@Url.Action("GetBackgroundOurMissionImage", "Home")');
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+
+</script>
+
+
+
+
+
+
+

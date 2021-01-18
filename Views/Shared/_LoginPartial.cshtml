@@ -1,0 +1,26 @@
+﻿@if (!string.IsNullOrEmpty(Convert.ToString(Session["FullName"])) && !string.IsNullOrEmpty(Convert.ToString(Session["Email"])) && !string.IsNullOrEmpty(Convert.ToString(Session["Password"])))
+{
+    using (Html.BeginForm("LogOff", "Admin", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" href="#">Welcome : @Session["FullName"]</a></li>
+            <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li><a class="nav-link" href="~/Project/ListProjectToCRUD">Listado</a></li>
+            <li><a class="nav-link" href="~/Project/Create">Nuevo Proyecto</a></li>
+            <li><a class="nav-link" href="~/Home/Edit">Editar Pagina Inicio</a> </li>
+
+        </ul>
+
+
+    }
+}
+
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Admin", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

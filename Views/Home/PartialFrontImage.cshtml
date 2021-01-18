@@ -1,0 +1,36 @@
+﻿@model  starteAlkemy.Models.ViewModels.HomeViewModel
+
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("PartialFrontImagesPost", "Home",
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "frontlink",
+        InsertionMode = InsertionMode.Replace
+    }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Cargar Imagen Principal</legend>
+
+      
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImageMain)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ImageMain)
+        </div>
+
+        <p>
+            <input type="submit" value="Cargar" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery.validate")
+    @Scripts.Render("~/bundles/jquery.validate.unobtrusive") @*For unobtrusive-ajax*@
+}

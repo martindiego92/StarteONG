@@ -1,0 +1,39 @@
+﻿@model  starteAlkemy.Models.ViewModels.HomeViewModel
+@Html.AntiForgeryToken()
+
+
+<h6> Imagen de fondo de "Ultimos Proyectos": </h6>
+
+<td>
+    <img src="@Model.BackgroundProject" height="300" width="300" />
+</td>
+
+<td>
+    <p> <input type="button" onclick="@(Html.Raw(String.Format("removeFileProject({0})",Model.Id)))" value="Borrar" /> </p>
+</td>
+
+
+<script>
+    function removeFileProject(id) {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("QuitImageBackgroundProject", "Home")',
+            data: { id: id },
+            success: function (result) {
+                $('#projectlink').load('@Url.Action("GetBackgroundProjectImage", "Home")');
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+
+</script>
+
+
+
+
+
+
+

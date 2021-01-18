@@ -1,0 +1,38 @@
+﻿@model  starteAlkemy.Models.ViewModels.HomeViewModel
+@Html.AntiForgeryToken()
+
+
+<h6> Imagen Principal: </h6>
+
+<td>
+    <img src="@Model.ImageMain" height="300" width="300" />
+</td>
+
+@*<td>
+    <p> <input type="button" onclick="@(Html.Raw(String.Format("removeFileFront({0})",Model.Id)))" value="Borrar" /> </p>
+</td>*@
+
+
+<script>
+    function removeFileFront(id) {
+        //var answer = confirm("Are you sure you want to delete this file?")
+        //if (answer) { }
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("QuitImageMain", "Home")',
+            data: { id: id },
+            success: function (result) {
+                $('#frontlink').load('@Url.Action("GetFrontImage", "Home")');
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+
+</script>
+
+
+
+
+

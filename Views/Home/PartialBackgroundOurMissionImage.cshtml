@@ -1,0 +1,38 @@
+﻿
+@model  starteAlkemy.Models.ViewModels.HomeViewModel
+
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("PartialBackgroundOurMissionImagesPost", "Home",
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "missionlink",
+        InsertionMode = InsertionMode.Replace
+    }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Cargar imagen de fondo de "Nuestra Mision":</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BackgroundOurMission)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BackgroundOurMission)
+        </div>
+
+        <p>
+            <input type="submit" value="Cargar" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery.validate")
+    @Scripts.Render("~/bundles/jquery.validate.unobtrusive") @*For unobtrusive-ajax*@
+}
+

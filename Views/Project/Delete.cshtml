@@ -1,0 +1,52 @@
+﻿@model starteAlkemy.Models.ViewModels.ProjectViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section section-xl">
+    <br />
+    <div class="card" style="width:50%; margin:auto;">
+        <div class="card-header">
+            <h3>¿Esta seguro de borrar este Proyecto?</h3>
+        </div>
+        <div class="card-body">
+            <ul class="dl-horizontal">
+                <li>
+                    @Html.DisplayFor(model => model.TitleProject)
+                </li>
+                <li>
+                    @Html.DisplayFor(model => model.DescProject)
+                </li>
+                <li>
+                    @Html.DisplayFor(model => model.ContentProject)
+                </li>
+                <li>
+                    @Html.DisplayFor(model => model.ProjectAddedDate)
+                </li>
+            </ul>
+            @if (Model.LinksMms.Count != 0)
+            {
+                foreach (var item in Model.LinksMms)
+                {
+                    <img src="@item.LinkUrl" style="height:100px; border-radius:5px; border:1px solid #bbb9b9" />
+                }
+            }
+        </div>
+
+        <div class="card-footer">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container">
+        @Html.ActionLink("Volver al listado", "Index")
+    </div>
+</section>
